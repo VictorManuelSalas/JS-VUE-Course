@@ -1,3 +1,3 @@
-/*import { owners } from "./json/heroes";
+import { owners } from "./json/heroes.js";
 
-console.log(owners);*/
+console.log(owners);
