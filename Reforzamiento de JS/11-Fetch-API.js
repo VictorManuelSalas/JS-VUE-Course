@@ -6,6 +6,8 @@ const apikey = 'pH0LtKoFJneIHQ2rKhBMNFkq482EVMr8'
 //
 //Esto es para darle mas detalle a la pagina
 const img = document.getElementById('img')
+const icono = document.getElementById('icono')
+
 
 //Funcion para ejecutar la cada ves que se presione un boton
 function change() {
@@ -19,6 +21,8 @@ function change() {
             const { url } = data.images.original
             //Relleno
             img.src = url
+            icono.href = url
+            document.getElementById("background").style.backgroundImage = `url(${url})`;
             console.log(url);
         })
         //Mostrara el error en caso de que aiga uno

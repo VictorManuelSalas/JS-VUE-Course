@@ -1,4 +1,4 @@
-const heroes = [
+export const heroes = [
     {
         id: 1,
         name: 'Batman',
@@ -28,4 +28,3 @@ const heroes = [
 //Para poder usar los owners en otro doc se debe de declarar que los owners seran exportados mediante exports
 export const owners = ['DC','Marvel'];
 
-export default heroes;

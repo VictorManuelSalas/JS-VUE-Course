@@ -1,3 +1,6 @@
+
+import {heroes} from './json/heroes.js'
+
 console.log('Inicio');
 
 //ASI se declara una promesa, esta tiene dos funciones 
@@ -16,36 +19,10 @@ console.log('Final');
 
 ///////////////////////////////////////////
 //Promesa mediante un objeto de otro lado, ojo este se puso aqui porque no me jalo el export
-const heroes = [
-    {
-        id: 1,
-        name: 'Batman',
-        owner: 'DC'
-    },
-    {
-        id: 2,
-        name: 'Spiderman',
-        owner: 'Marvel'
-    },
-    {
-        id: 3,
-        name: 'Superman',
-        owner: 'DC'
-    },
-    {
-        id: 4,
-        name: 'Flash',
-        owner: 'DC'
-    },
-    {
-        id: 5,
-        name: 'Wolverine',
-        owner: 'Marvel'
-    },
-];
+
 //Funcion para buscar un heroe mediante su id que se manda desde la promesa
 const getHeroById = (id) => {
-    return found = heroes.find((item) => {
+    return  heroes.find((item) => {
         return item.id == id
     })
 }
