@@ -17,6 +17,37 @@
     h1{
         background-color: aqua;
     }
+    ul li{
+        width: 80%;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    .delete{
+        color: red;
+        cursor: pointer;
+    }
+    #dataNot{
+        display: flex;
+        flex-direction: column-reverse;
+        font-weight: bolder;
+        justify-content: center;
+        align-items: center;
+    }#dataNot img{
+        transition-timing-function: linear;
+        animation: animation infinite 2s ;
+    }
+    @keyframes animation{
+        5%{
+            transform: scale(1.1);
+        }
+        50%{
+            transform: scale(1.10);
+        }
+        90%{
+            transform: scale(1.15);
+        }
+    }
 </style>
 <body>
     <!--Elemento que vue accedera-->

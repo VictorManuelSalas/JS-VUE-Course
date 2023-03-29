@@ -27,18 +27,29 @@ const app = Vue.createApp({
     </div>
     <div>
         <h1>Directiva for</h1>
+        
         <ul>
         <p>-Iteracion normal-</p>
             <li v-for="frase, index in Frases">
+            <span> 
             {{ index + 1 }} - {{frase.quote}}
-            <blockquote><b v-if="frase.author == 'Victor Manuel Nuñez Salas'">Administrador</b> : "{{frase.author}}"</blockquote>
+            <blockquote><b v-if="frase.author == 'Victor Manuel Nuñez Salas'">Administrador : </b> "{{frase.author}}"</blockquote>
+            </span>
+                
             </li>
-        </ul>      
+        </ul> 
+        <p v-if="Frases.length <= 0" id='dataNot'>
+            <b>¡¡ No hay datos para mostrar !!</b>
+            <img src='./assets/page-not-found.png' />
+        </p>
         <ul>
         <p>-Iteracion mediante destructuracion de los valores-</p>
              <li v-for="({quote, author}, index) in Frases">
+             <span>
              {{ index + 1 }} - {{quote}} 
             <blockquote>"{{author}}"</blockquote>
+            </span>
+                <p class="delete" v-on:click='eliminarFrase({index, quote})'>Delete</p>
         </li>
     </ul>
     </div>
@@ -81,6 +92,12 @@ const app = Vue.createApp({
                 quote: this.nuevaFrase,
                 author: 'Victor Manuel Nuñez Salas'
             });
+        }, 
+        eliminarFrase(data){
+            number = data.index
+            frase = data.quote
+            //El splice elimina un elemento de un array mediante su posicion y cuantos elementos eliminar
+            this.Frases.splice(number,1)
         }
     }
 
