@@ -139,7 +139,8 @@ const app = Vue.createApp({
                 this.Frases = []
             } else if (size > 0) {
                 for (let index = 0; index < size; index++) {
-                    this.Frases.splice(index, 1)
+                    id = this.checkBox[index]
+                    this.Frases.splice(id, 1)
                 }
             }
             else {
