@@ -1,5 +1,4 @@
-import axios from "axios"
-
+import  axios  from "axios";
 
 //const img = document.getElementById('img')
 const apikey = 'pH0LtKoFJneIHQ2rKhBMNFkq482EVMr8'
@@ -16,6 +15,7 @@ const gifApi = axios.create({
 gifApi.get('/random').then((resp) => { 
     const { data } = resp.data
     const { url } = data.images.original
+    console.log(url);
 //    img.src = url
 })
 
