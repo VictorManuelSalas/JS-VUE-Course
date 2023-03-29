@@ -29,8 +29,17 @@ const app = Vue.createApp({
         <h1>Directiva for</h1>
         
         <ul>
+        <section>
+        <section>
+        <input id='checkAll' type='checkbox' v-on:click='selectAll()'>
+        <label for='checkAll'> Select All</label>
+        </section>
+            <button v-on:click='deleteFraseCheck'>Delete</button>
+        </section>
+        
         <p>-Iteracion normal-</p>
             <li v-for="frase, index in Frases">
+            <input type='checkbox'class='check' v-on:click="checar(index)"/>
             <span> 
             {{ index + 1 }} - {{frase.quote}}
             <blockquote><b v-if="frase.author == 'Victor Manuel Nuñez Salas'">Administrador : </b> "{{frase.author}}"</blockquote>
@@ -69,7 +78,8 @@ const app = Vue.createApp({
                 { quote: 'If you’re good at something, never do it for free.', author: 'The Joker, The Dark Knight' },
                 { quote: 'Yes, father. I shall become a bat.', author: 'Bruce Wayne/Batman, Batman: Year One' },
             ],
-            nuevaFrase: ''
+            nuevaFrase: '',
+            checkBox: []
         }
     },
     methods: {
@@ -86,18 +96,61 @@ const app = Vue.createApp({
         mayuscula() {
             this.quote = this.quote.toUpperCase()
         },
-        ingresarFrase(){
+        ingresarFrase() {
             console.log(this.nuevaFrase);
             this.Frases.unshift({
                 quote: this.nuevaFrase,
                 author: 'Victor Manuel Nuñez Salas'
             });
-        }, 
-        eliminarFrase(data){
+        },
+        eliminarFrase(data) {
             number = data.index
             frase = data.quote
             //El splice elimina un elemento de un array mediante su posicion y cuantos elementos eliminar
-            this.Frases.splice(number,1)
+            this.Frases.splice(number, 1)
+        },
+        selectAll() {
+            data = document.getElementById("checkAll").checked
+            all = document.getElementsByClassName("check")
+            //console.table(all)
+            if (data) {
+                for (let index = 0; index < all.length; index++) {
+                    all[index].checked = true;
+                    // console.log(all[index].value);
+                }
+                for (let index = 0; index < this.Frases.length; index++) {
+                    this.checkBox.push(index)
+                }
+                //this.checkBox.push(data)
+            } else {
+                for (let index = 0; index < all.length; index++) {
+                    all[index].checked = false;
+                    //console.log(element);
+                }
+            }
+        },
+        checar(data) {
+            this.checkBox.push(data)
+        },
+        deleteFraseCheck() {
+            size = this.checkBox.length
+            sizeFrases = this.Frases.length
+            if (size == sizeFrases) {
+                this.Frases = []
+            } else if (size > 0) {
+                for (let index = 0; index < size; index++) {
+                    this.Frases.splice(index, 1)
+                }
+            }
+            else {
+                alert('No hay nada seleccionado para eliminar')
+            }
+            all = document.getElementsByClassName("check")
+            for (let index = 0; index < all.length; index++) {
+                all[index].checked = false;
+            }
+            this.checkBox = []
+
         }
     }
 
