@@ -135,12 +135,19 @@ const app = Vue.createApp({
         deleteFraseCheck() {
             size = this.checkBox.length
             sizeFrases = this.Frases.length
+            this.checkBox = this.checkBox.sort()
+            console.log(this.checkBox)
             if (size == sizeFrases) {
                 this.Frases = []
             } else if (size > 0) {
+                //Esto no funciona al 100  porque cuando un elemento se elimina, el array principal se actualiza y 
+                //eso actualiza los nuevos index y por eso se eliminan unos que no son y habeses no se encuentre dicho index
                 for (let index = 0; index < size; index++) {
                     id = this.checkBox[index]
-                    this.Frases.splice(id, 1)
+                    console.log(id)
+                    console.log(this.Frases[id]);
+                    let dat = this.Frases.splice(id, 1)
+                    console.log(dat);
                 }
             }
             else {
