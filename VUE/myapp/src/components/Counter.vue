@@ -1,8 +1,12 @@
 <template>
     <div>
         <h2>Counter</h2>
-        <p>{{ num }}</p>
-        <button @click="aumentar">Ingrementar</button>
+
+        <label for="elevacion">Ingresa el numero de elevacion</label>
+        <input id="elevacion" type="text" v-model="eleva">
+        <p>{{ num }} <sup>{{eleva}}</sup> = {{ num * eleva }}</p>
+
+        <button @click="aumentar">Ingrementar numero base</button>
     </div>
 </template>
 
@@ -12,7 +16,8 @@ export default {
     name: 'Counter',
     data() {
         return {
-            num: 0
+            num: 0,
+            eleva: 0
         }
     },
     methods: {
