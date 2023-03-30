@@ -131,6 +131,7 @@ const app = Vue.createApp({
         },
         checar(data) {
             this.checkBox.push(data)
+            //console.log(this.Frases);
         },
         deleteFraseCheck() {
             size = this.checkBox.length
@@ -142,6 +143,8 @@ const app = Vue.createApp({
             } else if (size > 0) {
                 //Esto no funciona al 100  porque cuando un elemento se elimina, el array principal se actualiza y 
                 //eso actualiza los nuevos index y por eso se eliminan unos que no son y habeses no se encuentre dicho index
+                
+                //Una solucion seria usar un id unico para cada elemento que no sea el index que cambia cada rato
                 for (let index = 0; index < size; index++) {
                     id = this.checkBox[index]
                     console.log(id)
