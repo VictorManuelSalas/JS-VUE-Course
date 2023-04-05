@@ -1,17 +1,23 @@
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <Indecision />
+    <!--
+      <img alt="Vue logo" src="./assets/logo.png">
+  
     <Counter title="Contador"/>
+   -->
   </div>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
 import Counter from './components/Counter.vue';
+import Indecision from './components/Indecision.vue';
 export default {
   name: 'App',
   components: {
     Counter,
+    Indecision,
   }
 }
 </script>
