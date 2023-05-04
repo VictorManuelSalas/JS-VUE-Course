@@ -85,7 +85,7 @@ input:focus {
 p {
     color: white;
     font-size: 20px;
-    margin-top: 0px;
+    margin-top: 30px;
 }
 
 h1,
