@@ -53,15 +53,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #ffffff;
-  margin-top: 60px;
 }
 section{
   margin-top: 2rem;
 }
 header {
   width: 100%;
-  margin: auto;
   z-index: 100;
+  margin: 2rem 0rem 0rem 0rem;
 }
 
 a {
