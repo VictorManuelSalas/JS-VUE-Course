@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="counter">
         <h2>Counter</h2>
 
         <label for="elevacion">Ingresa el numero de elevacion </label>
@@ -43,4 +43,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+</style>

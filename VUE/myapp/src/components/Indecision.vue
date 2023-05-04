@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <img v-if="img" :src="img" alt="bg">
-        <div class="bg-dark"></div>
+    <div id="back-ground">
         <div class="indecision-container">
             <input v-model="question" type="text" placeholder="Hazme una pregunta" v-on:keypress(?)="Ask">
             <p>Recuerda terminar con un signo de interrogacion (?)</p>
@@ -30,6 +28,8 @@ export default {
             //console.log(data)
             this.answer = answer == 'yes' ? 'Si':'No';
             this.img = image;
+            document.getElementById('back-ground').style.backgroundImage = `url("${ this.img}")`
+            
         }
 
     }
@@ -51,21 +51,17 @@ export default {
 </script>
 
 <style scoped>
-img,
-.bg-dark {
+
+
+#back-ground{
     height: 100vh;
-    left: 0px;
     max-height: 100%;
     max-width: 100%;
-    position: fixed;
-    top: 0px;
     width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-.bg-dark {
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
 .indecision-container {
     position: relative;
     z-index: 99;
@@ -76,6 +72,7 @@ input {
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
+    margin-top: 2rem;
 }
 
 input:focus {
