@@ -1,6 +1,6 @@
 <template>
     <div id="counter">
-        <h2>Counter</h2>
+        <h2 class="title">Counter</h2>
 
         <label for="elevacion">Ingresa el numero de elevacion </label>
         <input id="elevacion" type="text" v-model="eleva">
@@ -19,14 +19,6 @@ export default {
     name: 'Counter',
     components:{
         Result,
-    }
-    ,
-    props:{
-        title:{
-            typeof:String,
-            default:'Titulo',
-            required: true
-        }
     },
     data() {
         return {
