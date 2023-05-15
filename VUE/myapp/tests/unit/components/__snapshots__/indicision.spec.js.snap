@@ -4,7 +4,7 @@ exports[`Indecision Component Debe de hacer match con el snapshot 1`] = `
 <div id="back-ground">
   <div class="indecision-container"><input type="text" placeholder="Hazme una pregunta">
     <p>Recuerda terminar con un signo de interrogacion (?)</p>
-    <!--v-if-->
+    <!--v-if--><img src="" alt="">
   </div>
 </div>
 `;

@@ -7,12 +7,25 @@ describe('Indecision Component', () => {
 
     //Estan pendientes a cualquier suceso que queremos (metodos,librerias,etc)
     let clgSpy
+
+
+    //Moc de API ya que fetch no se tiene en node, el fn() es para ell fetch, el Promisie.resolve es para el then
+    global.fetch = jest.fn(() => Promise.resolve({
+        json: () => Promise.resolve({
+            answer: 'yes',
+            forced: false,
+            image: 'https://yesno.wtf/assets/yes/15-3d723ea13af91839a671d4791fc53dcc.gif'
+        })
+    }))
+
     beforeEach(() => {
         wrapper = shallowMount(Indecision)
 
         //Definimos a que elemento o metodo se estara monitoriando
         clgSpy = jest.spyOn(console, 'log')
 
+
+        jest.clearAllMocks()
     })
 
     test('Debe de hacer match con el snapshot', () => {
@@ -32,16 +45,26 @@ describe('Indecision Component', () => {
 
 
     test('escribir el simbolo de "?" debe de disparar el fecth', async () => {
+        //Spyon se encarga de monitoriar un elemento 
         const getAnswerSpy = jest.spyOn(wrapper.vm, 'getAnswer')
         const input = wrapper.find('input')
         await input.setValue('Hola mundo?')
 
+        //Esperamos que el console.log se aya llamado una vez
         expect(clgSpy).toHaveBeenCalledTimes(1)
+        //Se espera que la funcion se alla llamado
         expect(getAnswerSpy).toHaveBeenCalled()
     })
 
-    test('pruebas de getAnswer - Fallo en el API', () => {
+    test('pruebas de getAnswer - Fallo en el API', async () => {
+        //SIMULACION DEL FALLO
+        fetch.mockImplementationOnce(() => Promise.reject('API is down'))
 
+        await wrapper.vm.getAnswer()
+        const img = wrapper.find('img')
+
+        expect(img.exist).toBeFalsy()
+        expect(wrapper.vm.answer).toBe('No se pudo cargar el API')
     })
 
 

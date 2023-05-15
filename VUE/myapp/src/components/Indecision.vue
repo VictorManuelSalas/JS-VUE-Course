@@ -7,6 +7,7 @@
                 <h2>{{ question }}</h2>
                 <h1>{{ answer }}</h1>
             </div>
+           <img :src="img" alt="">
         </div>
     </div>
 </template>
@@ -16,20 +17,26 @@ export default {
     data() {
         return {
             question: '',
-            answer:'',
+            answer: '',
             img: '',
             isValidQuestion: false
         }
     },
-    methods:{
-        async getAnswer(){
-            this.answer = 'Pensando...'
-            const { answer, image} = await fetch('https://yesno.wtf/api').then(response => response.json())
-            //console.log(data)
-            this.answer = answer == 'yes' ? 'Si':'No';
-            this.img = image;
-            document.getElementById('back-ground').style.backgroundImage = `url("${ this.img}")`
-            
+    methods: {
+        async getAnswer() {
+
+            try {
+                this.answer = 'Pensando...'
+                const { answer, image } = await fetch('https://yesno.wtf/api').then(response => response.json())
+                //console.log(data)
+                this.answer = answer == 'yes' ? 'Si' : 'No';
+                this.img = image;
+                //document.getElementById('back-ground').style.backgroundImage = `url("${ this.img}")`
+            } catch (error) {
+                console.log('IndecisionComponent: ', error);
+                this.answer = 'No se pudo cargar el API'
+                this.img = null
+            }
         }
 
     }
@@ -40,9 +47,9 @@ export default {
             //Para ocultar la seccion de la respuesta asta que que se agregue el ?
             this.isValidQuestion = false
             //Console para usar lo en los test del componente 
-            console.log({value})
+            console.log({ value })
             //Value muestra el valor actual y el oldvalue muestra el valor que esta antes de el actual
-            if(!value.includes('?')) return 
+            if (!value.includes('?')) return
             //Se muestra la seccion 
             this.isValidQuestion = true
             this.getAnswer()
@@ -53,9 +60,7 @@ export default {
 </script>
 
 <style scoped>
-
-
-#back-ground{
+#back-ground {
     height: 100vh;
     max-height: 100%;
     max-width: 100%;
@@ -64,6 +69,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .indecision-container {
     position: relative;
     z-index: 99;
