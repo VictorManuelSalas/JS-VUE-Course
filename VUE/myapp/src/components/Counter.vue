@@ -33,7 +33,10 @@ export default {
         }
     },
     props: {
-        title: String,
+        test_propsts: {
+            typeof: Number,
+            default: 0
+        }
     }
 }
 </script>

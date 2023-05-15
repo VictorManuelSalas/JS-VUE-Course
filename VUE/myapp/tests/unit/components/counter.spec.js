@@ -7,12 +7,12 @@ describe('Counter Component', () => {
   //Se crea una variable let ya que cambiara. Esto para tener mas simple el codigo y no tener declarado el wrapper y montarlo en cada test 
   let wrapper
 
- 
+
   //If you have some work you need to do repeatedly for many tests, you can use beforeEach and afterEach hooks
   //Declara para cada test se montara el wrapper
-  beforeEach(()=>{ 
+  beforeEach(() => {
     //Se monta el componente y se almacena en la variable
-     wrapper = shallowMount(Counter)
+    wrapper = shallowMount(Counter)
   })
 
 
@@ -59,7 +59,7 @@ describe('Counter Component', () => {
 
   test('El valor por defecto debe de cero 0 en la etiqueta con el identificador: data-testid="counter" ', () => {
     //Wrapper
-    
+
 
     //pTags - buscar la etiqueta con ese identificador
     const pTag = wrapper.find('[data-testid="counter"]').text()
@@ -84,6 +84,18 @@ describe('Counter Component', () => {
 
     //Expect que al dar clic este incremente el valor de la etiqueta con identificador 
     expect(value).toBe('1')
+  })
+
+
+  test('Debe de establecer el valor por defecto POPS', () => {
+    //Destructuracion de props, entre las llaves se pone el identificador de la props a obtener
+    const { test_propsts } = wrapper.props()
+    //Sin la destructuracion -> const valor = wrapper.props('test_propsts')
+
+    const value = wrapper.find('[data-testid="counter"]').text()
+
+    //Se pasa a tipo number el valor  y se espera que sea igual al valor de la prop test_propsts
+    expect(Number(value)).toBe(test_propsts)
   })
 
 })

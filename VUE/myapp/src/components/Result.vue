@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 v-if="result != null">{{ result > 0 ? result : 'Ingresa un valor ‼️' }}</h3>
+    <h3 v-if="result > 1">{{ result > 0 ? result : 'Procesando...' }}</h3>
   </div>
 </template>
 
@@ -13,7 +13,6 @@ export default {
       type: Number,
       default: 0,
       require: true
-
     }
   }
 }
