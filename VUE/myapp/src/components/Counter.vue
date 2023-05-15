@@ -37,7 +37,8 @@ export default {
             typeof: Number,
             default: 0
         },
-        title: 'Counter'
+        title: String,
+        default: 'Counter'
     }
 }
 </script>

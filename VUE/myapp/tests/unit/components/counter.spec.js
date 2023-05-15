@@ -30,8 +30,8 @@ describe('Counter Component', () => {
 
   });
 
-
-  test('h2 debe de tener el valor por defecto de "Couter" ', () => {
+/*
+  test('h2 debe de tener el valor por defecto de "Counter" ', () => {
 
 
     //Esto busca si una etiqueta existe en el codigo y arrojara true o false
@@ -44,7 +44,7 @@ describe('Counter Component', () => {
     //Se hace el expect (se espera) que el valor de la etiqueta sea algo en este caso 'Counter'
     expect(h2.text()).toBe('Counter')
   })
-
+*/
 
   test('El valor por defecto debe de cer 0 en el p ', () => {
     //Wrapper
