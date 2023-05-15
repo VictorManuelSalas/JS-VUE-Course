@@ -49,12 +49,22 @@ describe('Counter Component', () => {
      //Wrapper
      const wrapper = shallowMount(Counter)
 
-     //pTags - buscar todos las etiquetas p 
+     //pTags - buscar todos las etiquetas p y esto arrojara una lista 
      const pTags = wrapper.findAll('p')
 
-     //Expect que el valor de la etiqueta p sea un 0
+     //Expect que el valor de la etiqueta p sea un 0, se pone pTags[0] porque como arroja una lista hay que ingresar al valor o ubicacion de la etiqueta que queremos testear
      expect(pTags[0].text()).toBe('0')
   })
   
   
+  test('El valor por defecto debe de cero 0 en la etiqueta con el identificador: data-testid="counter" ', () => {
+    //Wrapper
+    const wrapper = shallowMount(Counter)
+
+    //pTags - buscar la etiqueta con ese identificador
+    const pTag = wrapper.find('[data-testid="counter"]').text()
+
+    //Expect
+    expect(pTag).toBe('0')
+ })
 })

@@ -1,7 +1,7 @@
 <template>
     <div id="counter">
         <h2 class="title">Counter</h2>
-        <p>{{ num }}</p>
+        <p data-testid="counter">{{ num }}</p>
         <label for="elevacion">Ingresa el numero de elevacion </label>
         <input id="elevacion" type="text" v-model="eleva">
         <p>{{ num }} <sup>{{ eleva }}</sup> = {{ num * eleva }}</p>
