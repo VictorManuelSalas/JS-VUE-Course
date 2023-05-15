@@ -31,8 +31,13 @@ describe('Indecision Component', () => {
     })
 
 
-    test('escribir el simbolo de "?" debe de disparar el fecth', () => {
+    test('escribir el simbolo de "?" debe de disparar el fecth', async () => {
+        const getAnswerSpy = jest.spyOn(wrapper.vm, 'getAnswer')
+        const input = wrapper.find('input')
+        await input.setValue('Hola mundo?')
 
+        expect(clgSpy).toHaveBeenCalledTimes(1)
+        expect(getAnswerSpy).toHaveBeenCalled()
     })
 
     test('pruebas de getAnswer - Fallo en el API', () => {
