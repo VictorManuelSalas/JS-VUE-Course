@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ result > 0 ? result:'Procesando...'}}</h3>
+    <h3 v-if="result > 1">{{ result > 0 ? result:'Procesando...'}}</h3>
   </div>
 </template>
 

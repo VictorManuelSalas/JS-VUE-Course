@@ -3,6 +3,10 @@
 import { shallowMount } from "@vue/test-utils";
 import Counter from "@/components/Counter.vue";
 
+
+
+/*
+//Evaluar cambios de codigo 
 describe("Counter Component", () => {
   //Snapchot permite montar un componente de Vue de forma aislada para su prueba, sin tener en cuenta los componentes secundarios.
   test("Debe de hacer match con el snapshot", () => {
@@ -22,3 +26,19 @@ describe("Counter Component", () => {
 
 //Pero si es un cambio necesario, se debe de actualizar la prueba del match para que almacene el nyevo codigo en el snapshot mediante -> npm run test:unit -u  
 //Antes de eso deben de agregar en el package.json bajo el -> "test:unit": "vue-cli-service test:unit" el siguiente comando ➡️ "test:unit -u": "vue-cli-service test:unit -u"
+*/
+
+describe('Counter Component', () => {
+
+  test('h2 debe de tener el valor por defecto de "Couter" ', () => {
+    const wrapper = shallowMount(Counter)
+
+    //Asi se monta una etiqueta ⬇️
+    const h2 = wrapper.find('h2')
+    //Asi accedemos al valor del texto ⬇️
+    console.log(h2.text());
+    //Se hace el expect (se espera) que el valor de la etiqueta sea algo en este caso 'Counter'
+    expect(h2.text()).toBe('Counter')
+  })
+  
+})
