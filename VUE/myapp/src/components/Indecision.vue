@@ -39,6 +39,8 @@ export default {
         question(value, oldvalued) {
             //Para ocultar la seccion de la respuesta asta que que se agregue el ?
             this.isValidQuestion = false
+            //Console para usar lo en los test del componente 
+            console.log({value})
             //Value muestra el valor actual y el oldvalue muestra el valor que esta antes de el actual
             if(!value.includes('?')) return 
             //Se muestra la seccion 
