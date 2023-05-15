@@ -1,14 +1,14 @@
 <template>
     <div id="counter">
         <h2 class="title">Counter</h2>
-
+        <p>{{ num }}</p>
         <label for="elevacion">Ingresa el numero de elevacion </label>
         <input id="elevacion" type="text" v-model="eleva">
-        <p>{{ num }} <sup>{{eleva}}</sup> = {{ num * eleva }}</p>
+        <p>{{ num }} <sup>{{ eleva }}</sup> = {{ num * eleva }}</p>
 
         <button @click="aumentar">Ingrementar numero base</button>
 
-        <Result :result="num * eleva"/>
+        <Result :result="num * eleva" />
     </div>
 </template>
 
@@ -17,7 +17,7 @@ import { ref } from 'vue';
 import Result from '@/components/Result.vue'
 export default {
     name: 'Counter',
-    components:{
+    components: {
         Result,
     },
     data() {
@@ -31,9 +31,11 @@ export default {
             this.num = ref(this.num)
             this.num = this.num + 1
         }
+    },
+    props: {
+        title: String,
     }
 }
 </script>
 
-<style>
-</style>
+<style></style>

@@ -33,6 +33,9 @@ describe('Counter Component', () => {
   test('h2 debe de tener el valor por defecto de "Couter" ', () => {
     const wrapper = shallowMount(Counter)
 
+    //Esto busca si una etiqueta existe en el codigo y arrojara true o false
+    expect( wrapper.find('h2').exists()).toBeTruthy()
+
     //Asi se monta una etiqueta ⬇️
     const h2 = wrapper.find('h2')
     //Asi accedemos al valor del texto ⬇️
@@ -40,5 +43,18 @@ describe('Counter Component', () => {
     //Se hace el expect (se espera) que el valor de la etiqueta sea algo en este caso 'Counter'
     expect(h2.text()).toBe('Counter')
   })
+
+
+  test('El valor por defecto debe de cer 0 en el p ', () => {
+     //Wrapper
+     const wrapper = shallowMount(Counter)
+
+     //pTags - buscar todos las etiquetas p 
+     const pTags = wrapper.findAll('p')
+
+     //Expect que el valor de la etiqueta p sea un 0
+     expect(pTags[0].text()).toBe('0')
+  })
+  
   
 })
