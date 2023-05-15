@@ -67,4 +67,25 @@ describe('Counter Component', () => {
     //Expect
     expect(pTag).toBe('0')
  })
+
+ //Funcion ayncrona ya que debe de esperar la respuesta del trigger
+ test('Debe de incrementar en 1 el valor de la base', async () => {
+      //Wrapper
+   const wrapper = shallowMount( Counter)
+
+    //increaseBtn - buscar la etiqueta con ese identificador
+   const increaseBtn = wrapper.find('button')
+
+   //Agregar un trigger/activador de tipo click y este debe de ser await
+   await increaseBtn.trigger('click')
+
+   //Obtenemos el valor de una etiqueta con identificador
+   const value = wrapper.find('[data-testid="counter"]').text()
+
+   //Expect que al dar clic este incremente el valor de la etiqueta con identificador 
+   expect(value).toBe('1')
+ })
+ 
 })
+
+//npm run test:unit counter es para hacer test a un componente en particular y no global 
