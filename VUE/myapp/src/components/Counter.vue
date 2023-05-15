@@ -1,6 +1,6 @@
 <template>
     <div id="counter">
-        <h2 class="title">Counter</h2>
+        <h2 class="title">{{title}}</h2>
         <p data-testid="counter">{{ num }}</p>
         <label for="elevacion">Ingresa el numero de elevacion </label>
         <input id="elevacion" type="text" v-model="eleva">
@@ -36,7 +36,8 @@ export default {
         test_propsts: {
             typeof: Number,
             default: 0
-        }
+        },
+        title: 'Counter'
     }
 }
 </script>

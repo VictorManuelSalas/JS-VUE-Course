@@ -87,7 +87,7 @@ describe('Counter Component', () => {
   })
 
 
-  test('Debe de establecer el valor por defecto POPS', () => {
+  test('Debe de establecer el valor por defecto PROPS', () => {
     //Destructuracion de props, entre las llaves se pone el identificador de la props a obtener
     const { test_propsts } = wrapper.props()
     //Sin la destructuracion -> const valor = wrapper.props('test_propsts')
@@ -97,6 +97,24 @@ describe('Counter Component', () => {
     //Se pasa a tipo number el valor  y se espera que sea igual al valor de la prop test_propsts
     expect(Number(value)).toBe(test_propsts)
   })
+
+  test('Asignar un valor a una etiqueta mediante la prop', () => {
+
+    //Variable con nuevo valor
+    const newTitle = 'Hola mundo..........'
+
+    //Montar el componente y su prop y dandole un nuevo valor
+    const wrapper = shallowMount(Counter, {
+      props: {
+        title: newTitle
+      }
+    })
+
+    console.log(wrapper.html())
+    //Se espera que el valor de la etiqueta h2 sea el de title
+    expect(wrapper.find('h2').text()).toBe(newTitle)
+  })
+
 
 })
 
