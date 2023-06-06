@@ -36,7 +36,8 @@ li {
 }
 
 li:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgb(0, 0, 0);
+    color: white;
 }
 
 .options-container {
