@@ -8,6 +8,12 @@
     <section v-if="ViewAlert">
       <cardPokemon :pokemonId="pokemon.id" :pokemonName="pokemon.name" @continue="showNew" />
     </section>
+    <section id="game_over" v-else-if="answersErrors == 5">
+      <h1>Game Over</h1>
+      <img src="../assets/Pokemon-Pokeball-Transparent.png" alt="">
+      <p>Te equivocaste 5 veces</p>
+      <button @click="newGame">Reintentar</button>
+    </section>
     <section v-else>
       <div id="counter">
         <counter :counter="answersCorrects" />
@@ -21,6 +27,7 @@
         <h1>Aqui es un separador que no se muestra en el html del inspectador de consola...</h1>
       </template>
     </section>
+
 
 
   </div>
@@ -43,6 +50,7 @@ export default {
       pokemonArr: [],
       pokemon: null,
       showPokemon: false,
+      answersErrors: 0,
       answersCorrects: 0,
       ViewAlert: false
     }
@@ -64,17 +72,25 @@ export default {
         }, 1000)
       } else {
         setTimeout(() => {
-          this.mixPokemonArray()
-        }, 1000)
+        this.mixPokemonArray()
+      }, 1000)
+        this.answersErrors = ref(this.answersErrors + 1)
       }
     },
     showNew() {
       this.showPokemon = ref(false)
-      setTimeout(() => { 
+      setTimeout(() => {
         this.mixPokemonArray()
         this.ViewAlert = ref(false)
-      }, 2000)   
-      
+      }, 1000)
+
+    },
+    newGame() {
+      setTimeout(() => {
+        this.mixPokemonArray()
+        this.answersErrors = 0
+        this.answersCorrects = 0
+      }, 1000)
     }
   },
   mounted() {
@@ -88,10 +104,35 @@ export default {
 </script>
 
 <style>
-
 #counter {
   display: flex;
   justify-content: flex-end;
   padding: 0 2rem;
+}
+
+#game_over {
+  padding: 1rem 1rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  margin: 2rem auto;
+  width: fit-content;
+}
+
+#game_over button {
+  padding: 1rem 2rem;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  cursor: pointer;
+  border: none;
+  margin: 1rem 0 0 0;
+}
+
+#game_over img {
+  height: 200px;
+  width: fit-content;
 }
 </style>
