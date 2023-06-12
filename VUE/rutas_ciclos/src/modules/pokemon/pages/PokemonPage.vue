@@ -1,13 +1,21 @@
 <template>
-  <h1>Pokemon Page</h1>
+  <h1>Pokemon Page: <span>#{{ id }}</span></h1>
 </template>
 
 <script>
 export default {
-
-}
+  data(){
+    return{
+      id: ''
+    }
+  },
+  created() {
+    //Obtener la informacion de la url
+    const { id } = this.$route.params
+    this.id = id
+    console.log(id)
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
