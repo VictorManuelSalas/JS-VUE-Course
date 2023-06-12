@@ -4,7 +4,7 @@
         etiqueta router-link y en vez de 
     href, se usa el to para definir la direccion a ir-->
     <router-link to="/">Pokemon List</router-link>
-    <router-link to="/id">Pokemon</router-link>
+    <router-link :to="{name: 'pokemon-id', params:{id: '401'}}">Pokemon</router-link>
     <router-link to="/about">About</router-link>
   </div>
 </template>

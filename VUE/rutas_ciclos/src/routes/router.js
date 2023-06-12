@@ -33,6 +33,7 @@ const routes = [
     },
   },
   {
+    //eso es para que cuando el path no sea parecido a los que se tienen
     path: "/:pathMatch(.*)*",
     component: () =>
       import(
