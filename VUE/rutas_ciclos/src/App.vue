@@ -1,17 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <Navbar />
+  <img alt="Vue logo" src="./assets/logo.png" />
   <!--router-view es el componente que muestra el componente que se elije mediante la ruta url que se implementa en router.js-->
   <router-view />
 </template>
 
 <script>
-
-
+import Navbar from "./modules/shared/components/Navbar";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-  }
-}
+    Navbar,
+  },
+};
 </script>
 
 <style>
