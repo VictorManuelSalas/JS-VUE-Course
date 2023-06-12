@@ -1,14 +1,24 @@
-import AboutPage from "../modules/pokemon/pages/AboutPage";
-import ListPage from "../modules/pokemon/pages/ListPage";
-import PokemonPage from "../modules/pokemon/pages/PokemonPage";
-import NoPageFound from "../modules/shared/pages/NoPageFound"
 import { createRouter, createWebHashHistory } from "vue-router";
 
+//La carga lazy o perezosa hace que se genere menos tiempo de carga
 const routes = [
-  { path: "/", component: ListPage },
-  { path: "/about", component: AboutPage },
-  { path: "/id", component: PokemonPage },
-  { path: "/:pathMatch(.*)*", component: NoPageFound },
+  {
+    path: "/",
+    component: () => import(/*webpackChunkName: "ListPage"*/ "@/modules/pokemon/pages/ListPage"),
+  },
+  {
+    path: "/about",
+    //Esta es una carga de la ruta peresoza
+    component: () => import(/*webpackChunkName: "AboutPage"*/ "@/modules/pokemon/pages/AboutPage"),
+  },
+  {
+    path: "/id",
+    component: () => import(/*webpackChunkName: "PokemonPage"*/ "@/modules/pokemon/pages/PokemonPage"),
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    component: () => import(/*webpackChunkName: "NoPageFound"*/ "@/modules/shared/pages/NoPageFound"),
+  },
 ];
 
 const router = createRouter({
