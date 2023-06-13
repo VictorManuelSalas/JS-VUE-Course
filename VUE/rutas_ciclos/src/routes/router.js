@@ -4,6 +4,11 @@ import { createRouter, createWebHashHistory } from "vue-router";
 const routes = [
   {
     path: "/",
+
+    redirect: "/home",
+  },
+  {
+    path: "/home",
     component: () =>
       import(
         /*webpackChunkName: "ListPage"*/ "@/modules/pokemon/pages/ListPage"
@@ -11,6 +16,7 @@ const routes = [
   },
   {
     path: "/about",
+    name: "about",
     //Esta es una carga de la ruta peresoza
     component: () =>
       import(
@@ -18,7 +24,7 @@ const routes = [
       ),
   },
   {
-    path: "/:id",
+    path: "/pokemon-id/:id",
     name: "pokemon-id",
     component: () =>
       import(
